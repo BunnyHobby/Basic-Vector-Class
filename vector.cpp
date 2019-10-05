@@ -170,8 +170,14 @@ class Vector
       //
       Vector<N> operator*( double a )
       {
-         // TODO implement this method
-         return Vector<N>(); // TODO delete this line (and return the value you computed above instead)
+	  Vector<N> scalar;
+
+	  for( int i = 0; i < N; i++ )
+	  {
+	      scalar[i] = a * u[i];
+	  }
+
+	  return scalar;
       }
 
    protected:
@@ -255,8 +261,14 @@ double det( const Vector<3>& u, const Vector<3>& v, const Vector<3> w )
 template<int N>
 Vector<N> operator*( double a, const Vector<N>& u )
 {
-   // TODO implement this method
-   return Vector<N>(); // TODO delete this line (and return the value you computed above instead)
+    Vector<N> scalar_vector;
+
+    for (int i = 0; i < N; i++)
+    {
+	scalar_vector[i] = a * u[i];
+    }
+
+    return scalar_vector;
 }
 
 // ------------------ 8< --------- CUT HERE ------------- 8< ----------------------------
