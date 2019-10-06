@@ -199,8 +199,14 @@ class Vector
 template<int N>
 double norm( const Vector<N>& u )
 {
-   // TODO implement this method
-   return 0.; // TODO delete this line (and return the value you computed above instead)
+    double temp, temp_square;
+
+    for( int i = 0; i < N; i++)
+    {
+	temp_square += u[i] * u[i];
+    }
+    temp = sqrt(temp_square);
+    return temp;
 }
 
 // inner product --- returns the Euclidean inner product of the vectors u and v
