@@ -158,8 +158,13 @@ class Vector
       //
       Vector<N> operator-( const Vector<N>& v )
       {
-         // TODO implement this method
-         return Vector<N>(); // TODO delete this line (and return the value you computed above instead)
+	  Vector<N> sub;
+
+	  for( int i = 0; i < N; i++)
+	  {
+	      sub[i] = u[i] - v[i];
+	  }
+	  return sub;
       }
 
       // Scalar multiplication --- returns this vector times the scalar a
@@ -208,8 +213,13 @@ double norm( const Vector<N>& u )
 template<int N>
 double inner( const Vector<N>& u, const Vector<N>& v )
 {
-   // TODO implement this method
-   return 0.; // TODO delete this line (and return the value you computed above instead)
+    double i_product;
+
+    for( int i = 0; i < N; i++ )
+    {
+	i_product += u[i] * v[i];
+    }
+    return i_product;
 }
 
 // Cross product --- returns the cross product of the vectors u and v
@@ -224,8 +234,13 @@ double inner( const Vector<N>& u, const Vector<N>& v )
 //
 Vector<3> cross( const Vector<3>& u, const Vector<3>& v )
 {
-   // TODO implement this method
-   return Vector<3>(); // TODO delete this line (and return the value you computed above instead)
+    Vector<3> cross_product;
+
+    cross_product[0] = u[1]*v[2] - u[2]*v[1];
+    cross_product[1] = u[2]*v[0] - u[0]*v[2];
+    cross_product[2] = u[0]*v[1] - u[1]*v[0];
+    
+    return cross_product;
 }
 
 // Determinant --- returns the determinant of the three vectors u, v, and w, using
@@ -243,7 +258,10 @@ double det( const Vector<3>& u, const Vector<3>& v, const Vector<3> w )
    // TODO implement this method
    // Hint: you can implement this using just the inner product and cross product
    // that you've already implemented above!  (See the course slides for more info.)
-   return 0.; // TODO delete this line (and return the value you computed above instead)
+    Vector<3> temp = cross(u, v);
+    double i_temp = inner(temp, w);
+
+    return i_temp;
 }
 
 // Scalar-vector product --- returns the vector u scaled by the factor a
